@@ -12,7 +12,10 @@ checkMapFileContents := {
                     |    "a.coffee"
                     |  ],
                     |  "names": [],
-                    |  "mappings": "AAAA;AAAA,MAAA;;EAAA,MAAA,GAAW;;EACX,QAAA,GAAW;AADX"
+                    |  "mappings": "AAAA;AAAA,MAAA,MAAA,EAAA;;EAAA,MAAA,GAAW;;EACX,QAAA,GAAW;AADX",
+                    |  "sourcesContent": [
+                    |    "number   = 42\nopposite = true\n"
+                    |  ]
                     |}""".stripMargin) {
     sys.error(s"Unexpected contents: $contents")
   }
