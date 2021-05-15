@@ -14,7 +14,7 @@ developers += Developer(
 addSbtJsEngine("1.3.5")
 
 libraryDependencies ++= Seq(
-  "org.webjars" % "coffee-script-node" % "1.11.0",
+  "org.webjars.npm" % "coffeescript" % "1.11.0",
   "org.webjars" % "mkdirp" % "0.5.0"
 )
 
