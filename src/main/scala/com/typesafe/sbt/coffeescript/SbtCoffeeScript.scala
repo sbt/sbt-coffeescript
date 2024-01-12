@@ -57,12 +57,12 @@ object SbtCoffeeScript extends AutoPlugin {
       inConfig(Assets)(coffeeScriptUnscopedSettings) ++
       inConfig(TestAssets)(coffeeScriptUnscopedSettings) ++
       Seq(
-        taskMessage in Assets := "CoffeeScript compiling",
-        taskMessage in TestAssets := "CoffeeScript test compiling"
+        Assets / taskMessage := "CoffeeScript compiling",
+        TestAssets / taskMessage := "CoffeeScript test compiling"
       )
   ) ++ SbtJsTask.addJsSourceFileTasks(coffeescript) ++ Seq(
-    coffeescript in Assets := (coffeescript in Assets).dependsOn(webModules in Assets).value,
-    coffeescript in TestAssets := (coffeescript in TestAssets).dependsOn(webModules in TestAssets).value
+    Assets / coffeescript := (Assets / coffeescript).dependsOn(Assets / webModules).value,
+    TestAssets / coffeescript := (TestAssets / coffeescript).dependsOn(TestAssets / webModules).value
   )
 
 }
