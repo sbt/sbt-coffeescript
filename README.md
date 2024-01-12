@@ -7,7 +7,7 @@ An SBT plugin to compile [CoffeeScript](http://coffeescript.org/) sources to Jav
 
 To use this plugin use the addSbtPlugin command within your `project/plugins.sbt` file:
 
-    addSbtPlugin("com.github.sbt" % "sbt-coffeescript" % "2.0.0")
+    addSbtPlugin("com.github.sbt" % "sbt-coffeescript" % "1.11.0")
 
 Your project's build file also needs to enable sbt-web plugins. For example with build.sbt:
 
