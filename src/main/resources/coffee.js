@@ -6,7 +6,7 @@
 
     var args = process.argv,
         fs = require("fs"),
-        coffeeScript = require("coffee-script"),
+        coffeeScript = require("coffeescript"),
         mkdirp = require("mkdirp"),
         path = require("path");
 
