@@ -5,9 +5,10 @@
     "use strict";
 
     var args = process.argv,
+        requireIfExists = require('node-require-fallback'),
         fs = require("fs"),
-        coffeeScript = require("coffeescript"),
-        mkdirp = require("mkdirp"),
+        coffeeScript = requireIfExists("coffeescript/2.7.0", "coffeescript"), // sync with build.sbt
+        mkdirp = requireIfExists("mkdirp/0.5.0", "mkdirp"), // sync with build.sbt
         path = require("path");
 
     var SOURCE_FILE_MAPPINGS_ARG = 2;

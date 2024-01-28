@@ -1,0 +1,8 @@
+# Compile a CoffeeScript file
+
+> assets
+$ exists target/web/public/main/coffee/a.js
+$ exists target/web/public/main/coffee/a.js.map
+
+> checkMapFileContents
+

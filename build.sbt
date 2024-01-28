@@ -14,8 +14,9 @@ developers += Developer(
 addSbtJsEngine("1.3.5")
 
 libraryDependencies ++= Seq(
-  "org.webjars.npm" % "coffeescript" % "2.7.0",
-  "org.webjars" % "mkdirp" % "0.5.0"
+  "org.webjars.npm" % "node-require-fallback" % "1.0.0",
+  "org.webjars.npm" % "coffeescript" % "2.7.0", // sync with src/main/resources/coffee.js
+  "org.webjars" % "mkdirp" % "0.5.0", // sync with src/main/resources/coffee.js
 )
 
 // Customise sbt-dynver's behaviour to make it work with tags which aren't v-prefixed
