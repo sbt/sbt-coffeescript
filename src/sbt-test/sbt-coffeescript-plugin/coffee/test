@@ -6,3 +6,6 @@ $ exists target/web/public/main/coffee/a.js.map
 
 > checkMapFileContents
 
+$ exists project/target/node-modules/webjars/coffeescript/bin/coffee
+
+$ exists project/target/node-modules/webjars/mkdirp/index.js
