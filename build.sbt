@@ -2,8 +2,6 @@ lazy val `sbt-coffeescript` = project in file(".")
 
 enablePlugins(SbtWebBase)
 
-sonatypeProfileName := "com.github.sbt.sbt-coffeescript" // See https://issues.sonatype.org/browse/OSSRH-77819#comment-1203625
-
 developers += Developer(
   "playframework",
   "The Play Framework Team",
