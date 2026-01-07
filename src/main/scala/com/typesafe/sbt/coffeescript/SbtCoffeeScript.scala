@@ -4,6 +4,7 @@ import com.typesafe.sbt.jse.SbtJsTask
 import sbt._
 import com.typesafe.sbt.web.SbtWeb
 import spray.json.{JsBoolean, JsObject}
+import spray.json.DefaultJsonProtocol._
 import sbt.Keys._
 
 object Import {
@@ -37,30 +38,31 @@ object SbtCoffeeScript extends AutoPlugin {
     jsOptions := JsObject(
       "bare" -> JsBoolean(bare.value),
       "sourceMap" -> JsBoolean(sourceMap.value)
-    ).toString()
+    ).compactPrint
   )
 
-  override def buildSettings = inTask(coffeescript)(
-    SbtJsTask.jsTaskSpecificUnscopedBuildSettings ++ Seq(
-      moduleName := "coffeescript",
-      shellFile := getClass.getClassLoader.getResource("coffee.js")
-
+  override def buildSettings = sbt.Def.settings(
+    sbt.Project.inTask(coffeescript)(
+      SbtJsTask.jsTaskSpecificUnscopedBuildSettings ++ Seq(
+        moduleName := "coffeescript",
+        shellFile := getClass.getClassLoader.getResource("coffee.js")
+      )
     )
   )
 
-  override def projectSettings = Seq(
+  override def projectSettings = sbt.Def.settings(
     bare := false,
-    sourceMap := true
-
-  ) ++ inTask(coffeescript)(
-    SbtJsTask.jsTaskSpecificUnscopedProjectSettings ++
-      inConfig(Assets)(coffeeScriptUnscopedSettings) ++
-      inConfig(TestAssets)(coffeeScriptUnscopedSettings) ++
-      Seq(
-        Assets / taskMessage := "CoffeeScript compiling",
-        TestAssets / taskMessage := "CoffeeScript test compiling"
-      )
-  ) ++ SbtJsTask.addJsSourceFileTasks(coffeescript) ++ Seq(
+    sourceMap := true,
+    sbt.Project.inTask(coffeescript)(
+      SbtJsTask.jsTaskSpecificUnscopedProjectSettings ++
+        inConfig(Assets)(coffeeScriptUnscopedSettings) ++
+        inConfig(TestAssets)(coffeeScriptUnscopedSettings) ++
+        Seq(
+          Assets / taskMessage := "CoffeeScript compiling",
+          TestAssets / taskMessage := "CoffeeScript test compiling"
+        )
+    ),
+    SbtJsTask.addJsSourceFileTasks(coffeescript),
     Assets / coffeescript := (Assets / coffeescript).dependsOn(Assets / webModules).value,
     TestAssets / coffeescript := (TestAssets / coffeescript).dependsOn(TestAssets / webModules).value
   )
