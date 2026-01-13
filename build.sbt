@@ -1,5 +1,5 @@
-lazy val scala212 = "2.12.20"
-lazy val scala3 = "3.7.2"
+lazy val scala212 = "2.12.21"
+lazy val scala3 = "3.7.4"
 ThisBuild / crossScalaVersions := Seq(scala212, scala3)
 
 lazy val `sbt-coffeescript` = project in file(".")
@@ -34,7 +34,7 @@ Global / onLoad := (Global / onLoad).value.andThen { s =>
 
 ThisBuild / (pluginCrossBuild / sbtVersion) := {
   scalaBinaryVersion.value match {
-    case "2.12" => "1.11.7"
+    case "2.12" => "1.12.0"
     case _      => "2.0.0-RC8"
   }
 }
