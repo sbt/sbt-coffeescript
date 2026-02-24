@@ -1,5 +1,5 @@
 lazy val scala212 = "2.12.21"
-lazy val scala3 = "3.7.4"
+lazy val scala3 = "3.8.2"
 ThisBuild / crossScalaVersions := Seq(scala212, scala3)
 
 lazy val `sbt-coffeescript` = project in file(".")
@@ -13,8 +13,8 @@ developers += Developer(
   url("https://github.com/playframework")
 )
 
-addSbtJsEngine("1.4.0-M1")
-addSbtWeb("1.6.0-M1")
+addSbtJsEngine("1.4.0-M2")
+addSbtWeb("1.6.0-M2")
 
 libraryDependencies ++= Seq(
   "org.webjars.npm" % "node-require-fallback" % "1.0.0",
@@ -34,8 +34,8 @@ Global / onLoad := (Global / onLoad).value.andThen { s =>
 
 ThisBuild / (pluginCrossBuild / sbtVersion) := {
   scalaBinaryVersion.value match {
-    case "2.12" => "1.12.0"
-    case _      => "2.0.0-RC8"
+    case "2.12" => "1.12.4"
+    case _      => "2.0.0-RC9"
   }
 }
 
