@@ -13,8 +13,8 @@ developers += Developer(
   url("https://github.com/playframework")
 )
 
-addSbtJsEngine("1.4.0-M2")
-addSbtWeb("1.6.0-M2")
+addSbtJsEngine("1.4.0-M4")
+addSbtWeb("1.6.0-M4")
 
 libraryDependencies ++= Seq(
   "org.webjars.npm" % "node-require-fallback" % "1.0.0",
@@ -34,14 +34,14 @@ Global / onLoad := (Global / onLoad).value.andThen { s =>
 
 ThisBuild / (pluginCrossBuild / sbtVersion) := {
   scalaBinaryVersion.value match {
-    case "2.12" => "1.12.4"
-    case _      => "2.0.0-RC9"
+    case "2.12" => "1.12.9"
+    case _      => "2.0.0-RC11"
   }
 }
 
 scalacOptions := {
   CrossVersion.partialVersion(scalaVersion.value) match {
-    case Some((2, _)) => Seq("-Xsource:3")
+    case Some((2, _)) => Seq("-Xsource:3", "-release:8")
     case _            => Seq.empty
   }
 }

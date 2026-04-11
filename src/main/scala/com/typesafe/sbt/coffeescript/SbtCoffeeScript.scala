@@ -10,6 +10,7 @@ import sbt.Keys._
 object Import {
 
   object CoffeeScriptKeys {
+    @transient
     val coffeescript = TaskKey[Seq[File]]("coffeescript", "Invoke the CoffeeScript compiler.")
 
     val bare = SettingKey[Boolean]("coffeescript-bare", "Compiles JavaScript that isn't wrapped in a function.")
