@@ -1,5 +1,9 @@
 lazy val root = (project in file(".")).enablePlugins(SbtWeb)
 
+scalaVersion := {
+  if (sbtVersion.value.startsWith("1.")) "2.12.21" else "3.9.0"
+}
+
 val checkMapFileContents = taskKey[Unit]("check that map contents are correct")
 
 checkMapFileContents := {

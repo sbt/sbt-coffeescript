@@ -2,6 +2,10 @@ import java.util.function.Supplier
 
 lazy val root = (project in file(".")).enablePlugins(SbtWeb)
 
+scalaVersion := {
+  if (sbtVersion.value.startsWith("1.")) "2.12.21" else "3.9.0"
+}
+
 WebKeys.reporter := {
   val logFile = target.value / "test-errors.log"
   new sbt.internal.inc.LoggedReporter(-1, new xsbti.Logger {
