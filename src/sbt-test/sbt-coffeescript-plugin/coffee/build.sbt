@@ -4,7 +4,8 @@ scalaVersion := {
   if (sbtVersion.value.startsWith("1.")) "2.12.21" else "3.9.0"
 }
 
-val checkMapFileContents = taskKey[Unit]("check that map contents are correct")
+@transient
+lazy val checkMapFileContents = taskKey[Unit]("check that map contents are correct")
 
 checkMapFileContents := {
   val contents = IO.read((Assets / WebKeys.public).value / "coffee" / "a.js.map")

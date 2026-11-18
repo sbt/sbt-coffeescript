@@ -17,7 +17,8 @@ WebKeys.reporter := {
   })
 }
 
-val checkTestErrorLogContents = taskKey[Unit]("check that test log contents are correct")
+@transient
+lazy val checkTestErrorLogContents = taskKey[Unit]("check that test log contents are correct")
 checkTestErrorLogContents := {
   val contents = IO.read(target.value / "test-errors.log")
   if (!contents.endsWith("""/src/main/assets/a.coffee:0:0: unexpected %
